@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TodoListWAuthApi.Context;
+using TodoListWAuthApi.Services.TodoRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ builder.Services.AddDbContext<TodoContext>(
         .EnableSensitiveDataLogging()
         .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
         );
+builder.Services.AddScoped<ITodoInfoRepository, TodoInfoRepository>();
 
 var app = builder.Build();
 

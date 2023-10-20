@@ -12,5 +12,6 @@ public class Todo
     public string Name { get; set; } = null!;
     public string Description { get; set; } = null!;
     public TodoCompletionState CompletionState { get; set; }
+    public int UserId { get; set; }
     public User User { get; set; } = null!;
 }
