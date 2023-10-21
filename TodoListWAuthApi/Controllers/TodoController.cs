@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TodoListWAuthApi.DTOs.Todo;
 using TodoListWAuthApi.Entities;
@@ -7,6 +8,7 @@ namespace TodoListWAuthApi.Controllers
 {
     [Route("api/todo")]
     [ApiController]
+    [Authorize]
     public class TodoController : ControllerBase
     {
         private readonly ITodoInfoRepository _todoInfoRepository;
@@ -77,7 +79,7 @@ namespace TodoListWAuthApi.Controllers
                 UserId = recievedtodo.UserId
             };
             await _todoInfoRepository.UpdateTodoAsync(updatedTodo);
-            return NoContent();
+            return Ok();
         }
 
         [HttpDelete("{id}")]
